@@ -1,0 +1,2864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily" xmlns:am="http://schemas.microsoft.com/sqlserver/reporting/authoringmetadata">
+  <am:AuthoringMetadata>
+    <am:CreatedBy>
+      <am:Name>SSDTRS</am:Name>
+      <am:Version>17.8.34330.188</am:Version>
+    </am:CreatedBy>
+    <am:UpdatedBy>
+      <am:Name>SSDTRS</am:Name>
+      <am:Version>17.8.34330.188</am:Version>
+    </am:UpdatedBy>
+    <am:LastModifiedTimestamp>2024-08-07T13:23:23.4236029Z</am:LastModifiedTimestamp>
+  </am:AuthoringMetadata>
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="hc_data">
+      <DataSourceReference>hc_data</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>42c58f21-e557-422e-8b64-838670847187</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="hc_operating_budget_data">
+      <DataSourceReference>hc_operating_budget_data</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>0661f7b1-ba5b-4d31-ad4c-0e0b00016c01</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>hc_data</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Department">
+            <Value>=Parameters!Department.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FundGrouping">
+            <Value>=Parameters!FundGrouping.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FundCenter">
+            <Value>=Parameters!FundCenter.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@CommittmentSummary">
+            <Value>=Parameters!CommittmentSummary.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@CommittmentItem">
+            <Value>=Parameters!CommittmentItem.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FixedCost">
+            <Value>=Parameters!FixedCost.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@Phase">
+            <Value>=Parameters!Phase.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FixedCostType">
+            <Value>=Parameters!FixedCostType.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@GeneralFund">
+            <Value>=Parameters!GeneralFund.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        Phase, FundGroup, Department, FunctionType, ISNULL(ExpenseValue, 0) AS ExpenseValue, SubPhase, FixedCost, CommittmentSummary, Year, CommittmentSummaryID, CommittmentItemID, CommittmentItem, FixedCostType, 
+                         GrantType, FundCenterID, FundCenter, FundedProgramID, FundedProgram, DepartmentID, FunctionalAreaID, Bureau, FundID, Fund, VersionID, Ordering, GeneralFund, Detail
+FROM          tblData_Operating_Expense
+ WHERE Phase IN (@Phase) AND (FundgroupID IN (@FundGrouping)) AND (DepartmentID =@Department OR @Department =0) AND (FundCenterID IN (@FundCenter)) AND 
+                  (CommittmentSummaryID IN (@CommittmentSummary)) AND (CommittmentItemID IN (@CommittmentItem)) AND (FixedCost = @FixedCost OR @FixedCost = 'All') AND FixedCostType IN (@FixedCostType)  AND GeneralFund IN (@GeneralFund) </CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Phase">
+          <DataField>Phase</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundGroup">
+          <DataField>FundGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Department">
+          <DataField>Department</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FunctionType">
+          <DataField>FunctionType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExpenseValue">
+          <DataField>ExpenseValue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="SubPhase">
+          <DataField>SubPhase</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FixedCost">
+          <DataField>FixedCost</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentSummary">
+          <DataField>CommittmentSummary</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentSummaryID">
+          <DataField>CommittmentSummaryID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentItemID">
+          <DataField>CommittmentItemID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentItem">
+          <DataField>CommittmentItem</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FixedCostType">
+          <DataField>FixedCostType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GrantType">
+          <DataField>GrantType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundCenterID">
+          <DataField>FundCenterID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundCenter">
+          <DataField>FundCenter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundedProgramID">
+          <DataField>FundedProgramID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundedProgram">
+          <DataField>FundedProgram</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentID">
+          <DataField>DepartmentID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="FunctionalAreaID">
+          <DataField>FunctionalAreaID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Bureau">
+          <DataField>Bureau</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundID">
+          <DataField>FundID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fund">
+          <DataField>Fund</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Ordering">
+          <DataField>Ordering</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GeneralFund">
+          <DataField>GeneralFund</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Detail">
+          <DataField>Detail</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HierarchyLevel">
+      <SharedDataSet>
+        <SharedDataSetReference>HierarchyLevel</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="PK_HierarchyLevelID">
+          <DataField>PK_HierarchyLevelID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HierarchyLevelDesc">
+          <DataField>HierarchyLevelDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="FundGrouping">
+      <Query>
+        <DataSourceName>hc_operating_budget_data</DataSourceName>
+        <CommandText>/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [FundgroupingID]
+      ,[FundGroup]
+  FROM [hc_operating_budget_data].[dbo].[vHierarchy_HC_FundGrouping]</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="FundgroupingID">
+          <DataField>FundgroupingID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundGroup">
+          <DataField>FundGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Department">
+      <Query>
+        <DataSourceName>hc_operating_budget_data</DataSourceName>
+        <CommandText>SELECT        DepartmentID AS ID, Department AS DepartmentName
+FROM            vSecurity_Department
+UNION
+SELECT        0 AS Expr1, 'All' AS Expr2</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DepartmentName">
+          <DataField>DepartmentName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="FundCenter">
+      <Query>
+        <DataSourceName>hc_operating_budget_data</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Department">
+            <Value>=Parameters!Department.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT     DISTINCT   FundCenterID, FundCenter
+FROM            vSecurity
+WHERE        (DepartmentID = @Department OR @Department = 0)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="FundCenterID">
+          <DataField>FundCenterID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundCenter">
+          <DataField>FundCenter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Fund">
+      <Query>
+        <DataSourceName>hc_operating_budget_data</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@FundGrouping">
+            <Value>=Parameters!FundGrouping.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [FundgroupingID]
+      ,[FundGroup]
+      ,[FundID]
+      ,[Fund]
+      ,[PK_FundGroupID]
+      ,[GeneralFund]
+  FROM [hc_operating_budget_data].[dbo].[vHierarchy_HC_FundGroupingFund]
+WHERE FundGroupingID IN (@FundGrouping)</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="FundgroupingID">
+          <DataField>FundgroupingID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundGroup">
+          <DataField>FundGroup</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FundID">
+          <DataField>FundID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Fund">
+          <DataField>Fund</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PK_FundGroupID">
+          <DataField>PK_FundGroupID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GeneralFund">
+          <DataField>GeneralFund</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CommittmentSummary">
+      <SharedDataSet>
+        <SharedDataSetReference>ComittmentSummary</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="CommittmentSummaryID">
+          <DataField>CommittmentSummaryID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentSummary">
+          <DataField>CommittmentSummary</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="CommittmentItem">
+      <SharedDataSet>
+        <SharedDataSetReference>CommittmentItem</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@CommittmentSummary">
+            <Value>=Parameters!CommittmentSummary.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="CommittmentItemID">
+          <DataField>CommittmentItemID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CommittmentItem">
+          <DataField>CommittmentItem</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="FixedCostMain">
+      <SharedDataSet>
+        <SharedDataSetReference>FixedCost</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="FixedCost">
+          <DataField>FixedCost</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="HierarchyRowLayout">
+      <SharedDataSet>
+        <SharedDataSetReference>HierarchyRowLayout</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="PK_HierarchyRowLayoutID">
+          <DataField>PK_HierarchyRowLayoutID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HierarchyRowLayout">
+          <DataField>HierarchyRowLayout</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Year">
+      <Query>
+        <DataSourceName>hc_data</DataSourceName>
+        <CommandText>SELECT DISTINCT Year
+FROM            vData_Operating_Expense</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="Version">
+      <SharedDataSet>
+        <SharedDataSetReference>Version</SharedDataSetReference>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="PK_NarrativeVersionID">
+          <DataField>PK_NarrativeVersionID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Version">
+          <DataField>Version</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="FixedCostType">
+      <SharedDataSet>
+        <SharedDataSetReference>FixedCostType</SharedDataSetReference>
+        <QueryParameters>
+          <QueryParameter Name="@FixedCost">
+            <Value>=Parameters!FixedCost.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+      </SharedDataSet>
+      <Fields>
+        <Field Name="FixedCostType">
+          <DataField>FixedCostType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="YearPhase">
+      <Query>
+        <DataSourceName>hc_data</DataSourceName>
+        <CommandText>/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT DISTINCT Phase, Year, VersionID, Detail
+  FROM [hc_data].[dbo].[vData_Operating_Expense]
+ORDER BY Year DESC, VersionID DESC, Detail DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Phase">
+          <DataField>Phase</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VersionID">
+          <DataField>VersionID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Detail">
+          <DataField>Detail</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix5">
+            <TablixCorner>
+              <TablixCornerRows>
+                <TablixCornerRow>
+                  <TablixCornerCell>
+                    <CellContents>
+                      <Textbox Name="Textbox47">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style>
+                                  <FontFamily>Arial</FontFamily>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox47</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>DimGray</BackgroundColor>
+                          <VerticalAlign>Bottom</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixCornerCell>
+                </TablixCornerRow>
+              </TablixCornerRows>
+            </TablixCorner>
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.46875in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox82">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox82</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox67">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))/reportitems!Textbox78.Value</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>0.00%</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox67</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox32">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox32</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue5">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value, 0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value, 0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value,0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0)))/Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>P1</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox60">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox60</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox68">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))/reportitems!Textbox78.Value</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>0.00%</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox68</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox33">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox33</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue6">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value, 0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value, 0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value,0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0)))/Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>P1</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox46">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox46</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox69">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))/reportitems!Textbox78.Value</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>0.00%</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox69</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox34">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox34</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value, 0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value, 0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value,0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0)))/Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>P1</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <BackgroundColor>White</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox70">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))/reportitems!Textbox78.Value</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>0.00%</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox70</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox35">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox35</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue9">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value, 0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value, 0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>N0</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ExpenseValue4">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value,0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0)))/Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0))</Value>
+                                  <Style>
+                                    <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                    <Format>P1</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>ExpenseValue4</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                              <Style>Solid</Style>
+                              <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.25in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox77">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>#,0;(#,0)</Format>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox77</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=iif(Parameters!PageBreak.Value = True, True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </BottomBorder>
+                            <BackgroundColor>DimGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox78">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=iif(IsNothing(Sum(Fields!ExpenseValue.Value) )= True,0,Sum(Fields!ExpenseValue.Value))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>0.00%</Format>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox78</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>=iif(Parameters!PageBreak.Value = True, True, False)</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </BottomBorder>
+                            <BackgroundColor>DimGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox36">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox36</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </BottomBorder>
+                            <BackgroundColor>DimGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value, 0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value, 0))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>N0</Format>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </BottomBorder>
+                            <BackgroundColor>DimGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=(Sum(iif(Fields!Phase.Value = "2025 Approved Total", Fields!ExpenseValue.Value,0)) - Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0)))/Sum(iif(Fields!Phase.Value = "2024 Authorized", Fields!ExpenseValue.Value,0))</Value>
+                                  <Style>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Format>P1</Format>
+                                    <Color>White</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <TopBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </TopBorder>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>0.5pt</Width>
+                            </BottomBorder>
+                            <BackgroundColor>DimGray</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Phase">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Year.Value</GroupExpression>
+                      <GroupExpression>=Fields!SubPhase.Value</GroupExpression>
+                      <GroupExpression>=Fields!Phase.Value</GroupExpression>
+                    </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>StartAndEnd</BreakLocation>
+                    </PageBreak>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Year.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!VersionID.Value</Value>
+                    </SortExpression>
+                    <SortExpression>
+                      <Value>=Fields!Ordering.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.25in</Size>
+                        <CellContents>
+                          <Textbox Name="Phase">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>="FY " &amp; Replace(Fields!Phase.Value, "Authorized","Budget")</Value>
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                      <Format>N0</Format>
+                                      <Color>White</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Phase</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>DimGray</BackgroundColor>
+                              <VerticalAlign>Bottom</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember />
+                      </TablixMembers>
+                    </TablixMember>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>0.25in</Size>
+                        <CellContents>
+                          <Textbox Name="Textbox127">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value />
+                                    <Style>
+                                      <FontWeight>Bold</FontWeight>
+                                      <Color>White</Color>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>Textbox127</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>DimGray</BackgroundColor>
+                              <VerticalAlign>Bottom</VerticalAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                        </CellContents>
+                      </TablixHeader>
+                      <TablixMembers>
+                        <TablixMember>
+                          <Visibility>
+                            <Hidden>=iif(Parameters!Percentages.Value = True, False, True)</Hidden>
+                          </Visibility>
+                        </TablixMember>
+                      </TablixMembers>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox31">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value />
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox31</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>DimGray</BackgroundColor>
+                          <VerticalAlign>Bottom</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox37">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value EvaluationMode="Constant">Difference</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox37</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>DimGray</BackgroundColor>
+                          <VerticalAlign>Bottom</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>0.25in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox7">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value EvaluationMode="Constant">%</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Format>P1</Format>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Center</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox7</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>DimGray</BackgroundColor>
+                          <VerticalAlign>Bottom</VerticalAlign>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                </TablixMember>
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="FixedCost">
+                    <GroupExpressions>
+                      <GroupExpression>=iif(Parameters!Level1.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level1.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level1.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level1.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level1.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level1.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level1.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level1.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level1.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level1.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level1.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level1.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level1.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level1.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</GroupExpression>
+                    </GroupExpressions>
+                    <PageBreak>
+                      <BreakLocation>End</BreakLocation>
+                      <Disabled>=iif(Parameters!PageBreak.Value = False, True, False)</Disabled>
+                    </PageBreak>
+                    <PageName>=iif(Parameters!PageBreak.Value = True,(iif(Parameters!Level1.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level1.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level1.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level1.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level1.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level1.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level1.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level1.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level1.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level1.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level1.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level1.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level1.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level1.Value = 14, Fields!GeneralFund.Value,
+ "Sheet1"))))))))))))))),"Sheet1")</PageName>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=iif(Parameters!Level1.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level1.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level1.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level1.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level1.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level1.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level1.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level1.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level1.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level1.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level1.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level1.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level1.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level1.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <TablixHeader>
+                        <Size>4.51041in</Size>
+                        <CellContents>
+                          <Textbox Name="FixedCost">
+                            <CanGrow>true</CanGrow>
+                            <KeepTogether>true</KeepTogether>
+                            <Paragraphs>
+                              <Paragraph>
+                                <TextRuns>
+                                  <TextRun>
+                                    <Value>=iif(Parameters!Level1.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level1.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level1.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level1.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level1.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level1.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level1.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level1.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level1.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level1.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level1.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level1.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level1.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level1.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                                    <Style>
+                                      <FontWeight>=iif(Parameters!Level1Font.Value = 2,"Bold", iif(Parameters!Level1Font.Value = 3,"Bold","Default"))</FontWeight>
+                                      <Format>N0</Format>
+                                    </Style>
+                                  </TextRun>
+                                </TextRuns>
+                                <Style />
+                              </Paragraph>
+                            </Paragraphs>
+                            <rd:DefaultName>FixedCost</rd:DefaultName>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <TopBorder>
+                                <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                                <Style>Solid</Style>
+                                <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                              </TopBorder>
+                              <BottomBorder>
+                                <Color>=iif(Parameters!Level1Font.Value = 1, "Gainsboro", "Black")</Color>
+                                <Style>Solid</Style>
+                                <Width>=iif(Parameters!Level1Font.Value = 2, "1.5pt","0.5pt")</Width>
+                              </BottomBorder>
+                              <BackgroundColor>White</BackgroundColor>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                          </Textbox>
+                          <rd:Selected>true</rd:Selected>
+                        </CellContents>
+                      </TablixHeader>
+                      <KeepWithGroup>After</KeepWithGroup>
+                      <RepeatOnNewPage>true</RepeatOnNewPage>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="FunctionType">
+                        <GroupExpressions>
+                          <GroupExpression>=iif(Parameters!Level2.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level2.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level2.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level2.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level2.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level2.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level2.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level2.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level2.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level2.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level2.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level2.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level2.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level2.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</GroupExpression>
+                        </GroupExpressions>
+                      </Group>
+                      <SortExpressions>
+                        <SortExpression>
+                          <Value>=iif(Parameters!Level2.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level2.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level2.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level2.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level2.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level2.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level2.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level2.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level2.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level2.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level2.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level2.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level2.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level2.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                        </SortExpression>
+                      </SortExpressions>
+                      <TablixMembers>
+                        <TablixMember>
+                          <TablixHeader>
+                            <Size>4.51041in</Size>
+                            <CellContents>
+                              <Textbox Name="FunctionType">
+                                <CanGrow>true</CanGrow>
+                                <KeepTogether>true</KeepTogether>
+                                <Paragraphs>
+                                  <Paragraph>
+                                    <TextRuns>
+                                      <TextRun>
+                                        <Value>=iif(Parameters!Level2.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level2.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level2.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level2.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level2.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level2.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level2.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level2.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level2.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level2.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level2.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level2.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level2.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level2.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                                        <Style>
+                                          <FontWeight>=iif(Parameters!Level2Font.Value = 2,"Bold", iif(Parameters!Level2Font.Value = 3,"Bold","Default"))</FontWeight>
+                                          <Format>N0</Format>
+                                        </Style>
+                                      </TextRun>
+                                    </TextRuns>
+                                    <Style />
+                                  </Paragraph>
+                                </Paragraphs>
+                                <rd:DefaultName>FunctionType</rd:DefaultName>
+                                <Style>
+                                  <Border>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <TopBorder>
+                                    <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                                    <Style>Solid</Style>
+                                    <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                  </TopBorder>
+                                  <BottomBorder>
+                                    <Color>=iif(Parameters!Level2Font.Value = 1, "Gainsboro", "Black")</Color>
+                                    <Style>Solid</Style>
+                                    <Width>=iif(Parameters!Level2Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                  </BottomBorder>
+                                  <BackgroundColor>White</BackgroundColor>
+                                  <PaddingLeft>10pt</PaddingLeft>
+                                  <PaddingRight>2pt</PaddingRight>
+                                  <PaddingTop>2pt</PaddingTop>
+                                  <PaddingBottom>2pt</PaddingBottom>
+                                </Style>
+                              </Textbox>
+                              <rd:Selected>true</rd:Selected>
+                            </CellContents>
+                          </TablixHeader>
+                          <KeepWithGroup>After</KeepWithGroup>
+                        </TablixMember>
+                        <TablixMember>
+                          <Group Name="FundGroup1">
+                            <GroupExpressions>
+                              <GroupExpression>=iif(Parameters!Level3.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level3.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level3.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level3.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level3.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level3.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level3.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level3.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level3.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level3.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level3.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level3.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level3.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level3.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</GroupExpression>
+                            </GroupExpressions>
+                          </Group>
+                          <SortExpressions>
+                            <SortExpression>
+                              <Value>=iif(Parameters!Level3.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level3.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level3.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level3.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level3.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level3.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level3.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level3.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level3.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level3.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level3.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level3.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level3.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level3.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                            </SortExpression>
+                          </SortExpressions>
+                          <TablixMembers>
+                            <TablixMember>
+                              <TablixHeader>
+                                <Size>4.51041in</Size>
+                                <CellContents>
+                                  <Textbox Name="FundGroup1">
+                                    <CanGrow>true</CanGrow>
+                                    <KeepTogether>true</KeepTogether>
+                                    <Paragraphs>
+                                      <Paragraph>
+                                        <TextRuns>
+                                          <TextRun>
+                                            <Value>=iif(Parameters!Level3.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level3.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level3.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level3.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level3.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level3.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level3.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level3.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level3.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level3.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level3.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level3.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level3.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level3.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                                            <Style>
+                                              <FontWeight>=iif(Parameters!Level3Font.Value = 2,"Bold", iif(Parameters!Level3Font.Value = 3,"Bold","Default"))</FontWeight>
+                                            </Style>
+                                          </TextRun>
+                                        </TextRuns>
+                                        <Style />
+                                      </Paragraph>
+                                    </Paragraphs>
+                                    <rd:DefaultName>FundGroup1</rd:DefaultName>
+                                    <Style>
+                                      <Border>
+                                        <Style>None</Style>
+                                      </Border>
+                                      <TopBorder>
+                                        <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                                        <Style>Solid</Style>
+                                        <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                      </TopBorder>
+                                      <BottomBorder>
+                                        <Color>=iif(Parameters!Level3Font.Value = 1, "Gainsboro", "Black")</Color>
+                                        <Style>Solid</Style>
+                                        <Width>=iif(Parameters!Level3Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                      </BottomBorder>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <PaddingLeft>20pt</PaddingLeft>
+                                      <PaddingRight>2pt</PaddingRight>
+                                      <PaddingTop>2pt</PaddingTop>
+                                      <PaddingBottom>2pt</PaddingBottom>
+                                    </Style>
+                                  </Textbox>
+                                  <rd:Selected>true</rd:Selected>
+                                </CellContents>
+                              </TablixHeader>
+                              <KeepWithGroup>After</KeepWithGroup>
+                            </TablixMember>
+                            <TablixMember>
+                              <Group Name="FundGroup">
+                                <GroupExpressions>
+                                  <GroupExpression>=iif(Parameters!Level4.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level4.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level4.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level4.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level4.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level4.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level4.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level4.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level4.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level4.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level4.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level4.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level4.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level4.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</GroupExpression>
+                                </GroupExpressions>
+                              </Group>
+                              <SortExpressions>
+                                <SortExpression>
+                                  <Value>=iif(Parameters!Level4.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level4.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level4.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level4.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level4.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level4.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level4.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level4.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level4.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level4.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level4.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level4.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level4.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level4.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                                </SortExpression>
+                              </SortExpressions>
+                              <TablixMembers>
+                                <TablixMember>
+                                  <TablixHeader>
+                                    <Size>4.51041in</Size>
+                                    <CellContents>
+                                      <Textbox Name="CommittmentSummary">
+                                        <CanGrow>true</CanGrow>
+                                        <KeepTogether>true</KeepTogether>
+                                        <Paragraphs>
+                                          <Paragraph>
+                                            <TextRuns>
+                                              <TextRun>
+                                                <Value>=iif(Parameters!Level4.Value = 1, Fields!FundGroup.Value, 
+ iif(Parameters!Level4.Value = 2, Fields!Department.Value, 
+ iif(Parameters!Level4.Value = 3, Fields!CommittmentSummary.Value, 
+ iif(Parameters!Level4.Value = 4, Fields!FixedCost.Value, 
+ iif(Parameters!Level4.Value = 5, Fields!FunctionType.Value,
+ iif(Parameters!Level4.Value = 6, Fields!CommittmentItem.Value,
+ iif(Parameters!Level4.Value = 7, Fields!FixedCostType.Value,
+ iif(Parameters!Level4.Value = 8, Fields!FundedProgram.Value,
+ iif(Parameters!Level4.Value = 9, Fields!FunctionalAreaID.Value,
+ iif(Parameters!Level4.Value = 10, Fields!Bureau.Value,
+ iif(Parameters!Level4.Value = 11, Fields!Fund.Value,
+ iif(Parameters!Level4.Value = 12, Fields!GrantType.Value,
+ iif(Parameters!Level4.Value = 13, Fields!FundCenter.Value,
+ iif(Parameters!Level4.Value = 14, Fields!GeneralFund.Value,
+ Fields!FunctionType.Value))))))))))))))</Value>
+                                                <Style>
+                                                  <FontWeight>=iif(Parameters!Level4Font.Value = 2,"Bold", iif(Parameters!Level4Font.Value = 3,"Bold","Default"))</FontWeight>
+                                                </Style>
+                                              </TextRun>
+                                            </TextRuns>
+                                            <Style>
+                                              <TextAlign>Left</TextAlign>
+                                            </Style>
+                                          </Paragraph>
+                                        </Paragraphs>
+                                        <rd:DefaultName>CommittmentSummary</rd:DefaultName>
+                                        <Style>
+                                          <Border>
+                                            <Style>None</Style>
+                                          </Border>
+                                          <TopBorder>
+                                            <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                                            <Style>Solid</Style>
+                                            <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                          </TopBorder>
+                                          <BottomBorder>
+                                            <Color>=iif(Parameters!Level4Font.Value = 1, "Gainsboro", "Black")</Color>
+                                            <Style>Solid</Style>
+                                            <Width>=iif(Parameters!Level4Font.Value = 2, "1.5pt","0.5pt")</Width>
+                                          </BottomBorder>
+                                          <PaddingLeft>30pt</PaddingLeft>
+                                          <PaddingRight>2pt</PaddingRight>
+                                          <PaddingTop>2pt</PaddingTop>
+                                          <PaddingBottom>2pt</PaddingBottom>
+                                        </Style>
+                                      </Textbox>
+                                      <rd:Selected>true</rd:Selected>
+                                    </CellContents>
+                                  </TablixHeader>
+                                </TablixMember>
+                              </TablixMembers>
+                              <Visibility>
+                                <Hidden>=iif(Parameters!Level4Visible.Value = True, False, True)</Hidden>
+                              </Visibility>
+                            </TablixMember>
+                          </TablixMembers>
+                          <Visibility>
+                            <Hidden>=iif(Parameters!Level3Visible.Value = True, False, True)</Hidden>
+                          </Visibility>
+                        </TablixMember>
+                      </TablixMembers>
+                      <Visibility>
+                        <Hidden>=iif(Parameters!Level2Visible.Value = True, False, True)</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                  </TablixMembers>
+                  <Visibility>
+                    <Hidden>=iif(Parameters!Level1Visible.Value = False, True, False)</Hidden>
+                  </Visibility>
+                </TablixMember>
+                <TablixMember>
+                  <TablixHeader>
+                    <Size>4.51041in</Size>
+                    <CellContents>
+                      <Textbox Name="Textbox76">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>Total</Value>
+                                <Style>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Color>White</Color>
+                                </Style>
+                              </TextRun>
+                            </TextRuns>
+                            <Style>
+                              <TextAlign>Left</TextAlign>
+                            </Style>
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Textbox76</rd:DefaultName>
+                        <Visibility>
+                          <Hidden>=iif(Parameters!PageBreak.Value = True, True, False)</Hidden>
+                        </Visibility>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <TopBorder>
+                            <Color>Black</Color>
+                            <Style>Solid</Style>
+                            <Width>0.5pt</Width>
+                          </TopBorder>
+                          <BottomBorder>
+                            <Color>Black</Color>
+                            <Style>Solid</Style>
+                            <Width>0.5pt</Width>
+                          </BottomBorder>
+                          <BackgroundColor>DimGray</BackgroundColor>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <KeepWithGroup>Before</KeepWithGroup>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <RepeatColumnHeaders>true</RepeatColumnHeaders>
+            <DataSetName>DataSet1</DataSetName>
+            <Height>1.5in</Height>
+            <Width>9.97916in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>1.5in</Height>
+        <Style />
+      </Body>
+      <Width>9.97916in</Width>
+      <Page>
+        <LeftMargin>1in</LeftMargin>
+        <RightMargin>1in</RightMargin>
+        <TopMargin>1in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Level1">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Level1</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyLevel</DataSetName>
+          <ValueField>PK_HierarchyLevelID</ValueField>
+          <LabelField>HierarchyLevelDesc</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level1Font">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Font</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyRowLayout</DataSetName>
+          <ValueField>PK_HierarchyRowLayoutID</ValueField>
+          <LabelField>HierarchyRowLayout</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level1Visible">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>true</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Visible</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FundGrouping">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>FundGrouping</DataSetName>
+          <ValueField>FundgroupingID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Fund Group :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>FundGrouping</DataSetName>
+          <ValueField>FundgroupingID</ValueField>
+          <LabelField>FundGroup</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="CommittmentSummary">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CommittmentSummary</DataSetName>
+          <ValueField>CommittmentSummaryID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Committment Summary :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CommittmentSummary</DataSetName>
+          <ValueField>CommittmentSummaryID</ValueField>
+          <LabelField>CommittmentSummary</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="PageBreak">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>false</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Break :</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Level2">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Level2</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyLevel</DataSetName>
+          <ValueField>PK_HierarchyLevelID</ValueField>
+          <LabelField>HierarchyLevelDesc</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level2Font">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>3</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Font</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyRowLayout</DataSetName>
+          <ValueField>PK_HierarchyRowLayoutID</ValueField>
+          <LabelField>HierarchyRowLayout</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level2Visible">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>true</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Visibile</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Fund">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>Fund</DataSetName>
+          <ValueField>FundID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Fund :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Fund</DataSetName>
+          <ValueField>FundID</ValueField>
+          <LabelField>Fund</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="CommittmentItem">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>CommittmentItem</DataSetName>
+          <ValueField>CommittmentItemID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Committment Item :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>CommittmentItem</DataSetName>
+          <ValueField>CommittmentItemID</ValueField>
+          <LabelField>CommittmentItem</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Phase">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>2023 Actual</Value>
+          <Value>2024 Authorized</Value>
+          <Value>2025 Approved Base Budget</Value>
+          <Value>2025 Approved Adjustments</Value>
+          <Value>2025 Approved New Efforts</Value>
+          <Value>2025 Approved Total</Value>
+          <Value>2024 Estimate</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Year/Phase :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>YearPhase</DataSetName>
+          <ValueField>Phase</ValueField>
+          <LabelField>Phase</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="Level3">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>13</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Level3</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyLevel</DataSetName>
+          <ValueField>PK_HierarchyLevelID</ValueField>
+          <LabelField>HierarchyLevelDesc</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level3Font">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>4</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Font</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyRowLayout</DataSetName>
+          <ValueField>PK_HierarchyRowLayoutID</ValueField>
+          <LabelField>HierarchyRowLayout</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level3Visible">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>true</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Visibile</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="GeneralFund">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>General Fund</Value>
+          <Value>Other Funds</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>General Fund :</Prompt>
+      <ValidValues>
+        <ParameterValues>
+          <ParameterValue>
+            <Value>General Fund</Value>
+            <Label>General Fund</Label>
+          </ParameterValue>
+          <ParameterValue>
+            <Value>Other Funds</Value>
+            <Label>Other Funds</Label>
+          </ParameterValue>
+        </ParameterValues>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="FixedCost">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>All</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Fixed Cost :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>FixedCostMain</DataSetName>
+          <ValueField>FixedCost</ValueField>
+          <LabelField>FixedCost</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Percentages">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>false</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Percentages :</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="Level4">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>3</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Level4</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyLevel</DataSetName>
+          <ValueField>PK_HierarchyLevelID</ValueField>
+          <LabelField>HierarchyLevelDesc</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level4Font">
+      <DataType>Integer</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>1</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Font</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>HierarchyRowLayout</DataSetName>
+          <ValueField>PK_HierarchyRowLayoutID</ValueField>
+          <LabelField>HierarchyRowLayout</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="Level4Visible">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>true</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Visibile</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Department">
+      <DataType>Integer</DataType>
+      <Prompt>Department :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>Department</DataSetName>
+          <ValueField>ID</ValueField>
+          <LabelField>DepartmentName</LabelField>
+        </DataSetReference>
+      </ValidValues>
+    </ReportParameter>
+    <ReportParameter Name="FixedCostType">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>FixedCostType</DataSetName>
+          <ValueField>FixedCostType</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Fixed Cost Type</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>FixedCostType</DataSetName>
+          <ValueField>FixedCostType</ValueField>
+          <LabelField>FixedCostType</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="FundCenter">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <DataSetReference>
+          <DataSetName>FundCenter</DataSetName>
+          <ValueField>FundCenterID</ValueField>
+        </DataSetReference>
+      </DefaultValue>
+      <Prompt>Fund Center :</Prompt>
+      <ValidValues>
+        <DataSetReference>
+          <DataSetName>FundCenter</DataSetName>
+          <ValueField>FundCenterID</ValueField>
+          <LabelField>FundCenter</LabelField>
+        </DataSetReference>
+      </ValidValues>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>6</NumberOfColumns>
+      <NumberOfRows>5</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Level1</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Level2</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Level2Visible</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Level1Visible</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>Level3</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>Level3Visible</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Level4</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Level4Visible</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>FundGrouping</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Fund</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Department</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>4</RowIndex>
+          <ParameterName>FundCenter</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>CommittmentSummary</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>CommittmentItem</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>FixedCost</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>5</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>PageBreak</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Level1Font</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Level2Font</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>Level3Font</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>Level4Font</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>5</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>Percentages</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>GeneralFund</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>4</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>FixedCostType</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>5</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>Phase</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>d8c8c046-8714-46f9-818b-6221d00b0786</rd:ReportID>
+</Report>

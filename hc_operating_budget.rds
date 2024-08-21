@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="hc_operating_budget">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data Source=HCSQL2016BUDGET\BUDGET;Initial Catalog=hc_operating_budget</ConnectString>
+  </ConnectionProperties>
+  <DataSourceID>f138de29-4120-4a5b-8531-7b35d8a5fe23</DataSourceID>
+</RptDataSource>

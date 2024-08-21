@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>hc_operating_budget_data</DataSourceReference>
+      <CommandText>SELECT FundgroupingID, FundGrouping, FundID, Fund, DepartmentID, Department, FundCenterID, FundCenter, FundedProgramID, FundedProgram, FunctionalAreaID, FunctionalArea, CommittmentSummaryID, CommittmentSummary, 
+                  CommittmentItemID, CommittmentItem, BudgetYear, FY1Actual, CurrentYearApproved, CYEstExpenses, BaseBudget, ID, NewEfforts + Budget AS Budget, BaseBudget + Budget + NewEfforts AS Total, DepartmentName, DepartmentNameID, BureauTitle, ExpenseJustification
+FROM     vExpense_Data</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="FundgroupingID">
+        <DataField>FundgroupingID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundGrouping">
+        <DataField>FundGrouping</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundID">
+        <DataField>FundID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Fund">
+        <DataField>Fund</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DepartmentID">
+        <DataField>DepartmentID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Department">
+        <DataField>Department</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundCenterID">
+        <DataField>FundCenterID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundCenter">
+        <DataField>FundCenter</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundedProgramID">
+        <DataField>FundedProgramID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FundedProgram">
+        <DataField>FundedProgram</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FunctionalAreaID">
+        <DataField>FunctionalAreaID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="FunctionalArea">
+        <DataField>FunctionalArea</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CommittmentSummaryID">
+        <DataField>CommittmentSummaryID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CommittmentSummary">
+        <DataField>CommittmentSummary</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CommittmentItemID">
+        <DataField>CommittmentItemID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="CommittmentItem">
+        <DataField>CommittmentItem</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="BudgetYear">
+        <DataField>BudgetYear</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="FY1Actual">
+        <DataField>FY1Actual</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="CurrentYearApproved">
+        <DataField>CurrentYearApproved</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="CYEstExpenses">
+        <DataField>CYEstExpenses</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="BaseBudget">
+        <DataField>BaseBudget</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Budget">
+        <DataField>Budget</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Total">
+        <DataField>Total</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="DepartmentName">
+        <DataField>DepartmentName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="DepartmentNameID">
+        <DataField>DepartmentNameID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="BureauTitle">
+        <DataField>BureauTitle</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ExpenseJustification">
+        <DataField>ExpenseJustification</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
